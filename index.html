@@ -1,47 +1,232 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta
-            name="viewport"
-            content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1"
-        />
-        <title>Map View Example</title>
-        <style>
-            body {
-                margin: 0;
-                overflow: hidden;
-            }
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Display buildings in 3D</title>
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      mapboxgl.accessToken =
+        "pk.eyJ1IjoiY2JvbHR0IiwiYSI6ImNrN21ob2I4bjA1cmIzbm4ybG15a2FlY3QifQ.M-B8cEc5iiACTupwOD8qtg";
+      var map = new mapboxgl.Map({
+        style: "mapbox://styles/mapbox/light-v10",
+        center: [-123.255922, 49.264355],
+        zoom: 18,
+        pitch: 100,
+        bearing: -50.6,
+        container: "map",
+        antialias: true
+      });
 
-            #map {
-                position: absolute;
-                border: 0px;
-                left: 0px;
-                width: 100%;
-                height: 100%;
-                overflow: hidden;
-                z-index: -1;
-            }
+      function rotateCamera(timestamp) {
+        // clamp the rotation between 0 -360 degrees
+        // Divide timestamp by 100 to slow rotation to ~10 degrees / sec
+        map.rotateTo((timestamp / 1000) % 360, { duration: 0 });
+        // Request the next frame of the animation.
+        requestAnimationFrame(rotateCamera);
+      }
 
-            #copyrightNotice {
-                position: absolute;
-                right: 0;
-                bottom: 0;
-                background-color: #f0fef1;
-                z-index: 100;
-                padding: 2px 5px;
-                font-family: sans-serif;
-                font-size: 0.8em;
-                font-weight: normal;
-            }
-        </style>
-    </head>
+      // The 'building' layer in the mapbox-streets vector source contains building-height
+      // data from OpenStreetMap.
+      map.on("load", function() {
+        // Insert the layer beneath any symbol layer.
+        var layers = map.getStyle().layers;
 
-    <body>
-        <script src="three.min.js"></script>
+        var labelLayerId;
+        for (var i = 0; i < layers.length; i++) {
+          if (layers[i].type === "symbol" && layers[i].layout["text-field"]) {
+            labelLayerId = layers[i].id;
+            break;
+          }
+        }
 
-        <canvas id="map"></canvas>
-        <div id="copyrightNotice"></div>
-    </body>
+        var nav = new mapboxgl.NavigationControl();
+        map.addControl(nav, "top-left");
+
+        rotateCamera(0);
+
+        map.addSource("ponderosa", {
+          type: "geojson",
+          data: {
+            type: "FeatureCollection",
+            features: [
+              {
+                geometry: {
+                  coordinates: [
+                    [
+                      [-123.25591613672887, 49.26446567358795],
+                      [-123.2568266150821, 49.26413272455832],
+                      [-123.25667028766705, 49.263946630856026],
+                      [-123.25575121989505, 49.26427173385409],
+                      [-123.25591613672887, 49.26446567358795]
+                    ]
+                  ],
+                  type: "Polygon"
+                },
+                type: "Feature",
+                properties: {
+                  height: 53,
+                  base_height: 0,
+                  color: "black"
+                }
+              }
+            ]
+          }
+        });
+        map.addSource("dorm", {
+          type: "geojson",
+          data: {
+            type: "FeatureCollection",
+            features: [
+              {
+                type: "Feature",
+                properties: {
+                  base_height: 45,
+                  height: 50,
+                  color: "black"
+                },
+                geometry: {
+                  coordinates: [
+                    [
+                      [-123.255922, 49.264355],
+                      [-123.255993, 49.264438],
+                      [-123.256059, 49.264413],
+                      [-123.255989, 49.26433],
+                      [-123.255922, 49.264355]
+                    ]
+                  ],
+                  type: "Polygon"
+                }
+              }
+            ]
+          }
+        });
+        map.addLayer({
+          id: "dorm-extrusion",
+          type: "fill-extrusion",
+          source: "dorm",
+          paint: {
+            // See the Mapbox Style Specification for details on data expressions.
+            // https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions
+
+            // Get the fill-extrusion-color from the source 'color' property.
+            "fill-extrusion-color": ["get", "color"],
+
+            "fill-extrusion-height": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              15,
+              0,
+              15.05,
+              ["get", "height"]
+            ],
+            "fill-extrusion-base": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              15,
+              0,
+              15.05,
+              ["get", "base_height"]
+            ],
+            "fill-extrusion-opacity": 1
+          }
+        });
+
+        map.addLayer({
+          id: "building-extrusion",
+          type: "fill-extrusion",
+          source: "ponderosa",
+          paint: {
+            // See the Mapbox Style Specification for details on data expressions.
+            // https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions
+
+            // Get the fill-extrusion-color from the source 'color' property.
+            "fill-extrusion-color": ["get", "color"],
+
+            "fill-extrusion-height": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              15,
+              0,
+              15.05,
+              ["get", "height"]
+            ],
+            "fill-extrusion-base": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              15,
+              0,
+              15.05,
+              ["get", "base_height"]
+            ],
+            // Make extrusions slightly opaque for see through indoor walls.
+            "fill-extrusion-opacity": 0.2
+          }
+        });
+
+        // map.addLayer(
+        //   {
+        //     id: "3d-buildings",
+        //     source: "composite",
+        //     "source-layer": "building",
+        //     filter: ["==", "extrude", "true"],
+        //     type: "fill-extrusion",
+        //     minzoom: 15,
+        //     paint: {
+        //       "fill-extrusion-color": "#aaa",
+
+        //       // use an 'interpolate' expression to add a smooth transition effect to the
+        //       // buildings as the user zooms in
+        //       "fill-extrusion-height": [
+        //         "interpolate",
+        //         ["linear"],
+        //         ["zoom"],
+        //         15,
+        //         0,
+        //         15.05,
+        //         ["get", "height"]
+        //       ],
+        //       "fill-extrusion-base": [
+        //         "interpolate",
+        //         ["linear"],
+        //         ["zoom"],
+        //         15,
+        //         0,
+        //         15.05,
+        //         ["get", "min_height"]
+        //       ],
+        //       "fill-extrusion-opacity": 0.6
+        //     }
+        //   },
+        //   labelLayerId
+        // );
+      });
+    </script>
+  </body>
 </html>
