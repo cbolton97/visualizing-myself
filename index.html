@@ -2,231 +2,77 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Display buildings in 3D</title>
+    <title>Visualizing Myself</title>
     <meta
       name="viewport"
       content="initial-scale=1,maximum-scale=1,user-scalable=no"
     />
     <script src="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+      crossorigin="anonymous"
+    ></script>
     <link
       href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css"
       rel="stylesheet"
     />
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-      }
-      #map {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 100%;
-      }
-    </style>
+    <link href="./style.css" rel="stylesheet" />
   </head>
+  <script>
+    $(window).on("beforeunload", function() {
+      $(window).scrollTop(0);
+    });
+  </script>
   <body>
     <div id="map"></div>
-    <script>
-      mapboxgl.accessToken =
-        "pk.eyJ1IjoiY2JvbHR0IiwiYSI6ImNrN21ob2I4bjA1cmIzbm4ybG15a2FlY3QifQ.M-B8cEc5iiACTupwOD8qtg";
-      var map = new mapboxgl.Map({
-        style: "mapbox://styles/mapbox/light-v10",
-        center: [-123.255922, 49.264355],
-        zoom: 18,
-        pitch: 100,
-        bearing: -50.6,
-        container: "map",
-        antialias: true
-      });
-
-      function rotateCamera(timestamp) {
-        // clamp the rotation between 0 -360 degrees
-        // Divide timestamp by 100 to slow rotation to ~10 degrees / sec
-        map.rotateTo((timestamp / 1000) % 360, { duration: 0 });
-        // Request the next frame of the animation.
-        requestAnimationFrame(rotateCamera);
-      }
-
-      // The 'building' layer in the mapbox-streets vector source contains building-height
-      // data from OpenStreetMap.
-      map.on("load", function() {
-        // Insert the layer beneath any symbol layer.
-        var layers = map.getStyle().layers;
-
-        var labelLayerId;
-        for (var i = 0; i < layers.length; i++) {
-          if (layers[i].type === "symbol" && layers[i].layout["text-field"]) {
-            labelLayerId = layers[i].id;
-            break;
-          }
-        }
-
-        var nav = new mapboxgl.NavigationControl();
-        map.addControl(nav, "top-left");
-
-        rotateCamera(0);
-
-        map.addSource("ponderosa", {
-          type: "geojson",
-          data: {
-            type: "FeatureCollection",
-            features: [
-              {
-                geometry: {
-                  coordinates: [
-                    [
-                      [-123.25591613672887, 49.26446567358795],
-                      [-123.2568266150821, 49.26413272455832],
-                      [-123.25667028766705, 49.263946630856026],
-                      [-123.25575121989505, 49.26427173385409],
-                      [-123.25591613672887, 49.26446567358795]
-                    ]
-                  ],
-                  type: "Polygon"
-                },
-                type: "Feature",
-                properties: {
-                  height: 53,
-                  base_height: 0,
-                  color: "black"
-                }
-              }
-            ]
-          }
-        });
-        map.addSource("dorm", {
-          type: "geojson",
-          data: {
-            type: "FeatureCollection",
-            features: [
-              {
-                type: "Feature",
-                properties: {
-                  base_height: 45,
-                  height: 50,
-                  color: "black"
-                },
-                geometry: {
-                  coordinates: [
-                    [
-                      [-123.255922, 49.264355],
-                      [-123.255993, 49.264438],
-                      [-123.256059, 49.264413],
-                      [-123.255989, 49.26433],
-                      [-123.255922, 49.264355]
-                    ]
-                  ],
-                  type: "Polygon"
-                }
-              }
-            ]
-          }
-        });
-        map.addLayer({
-          id: "dorm-extrusion",
-          type: "fill-extrusion",
-          source: "dorm",
-          paint: {
-            // See the Mapbox Style Specification for details on data expressions.
-            // https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions
-
-            // Get the fill-extrusion-color from the source 'color' property.
-            "fill-extrusion-color": ["get", "color"],
-
-            "fill-extrusion-height": [
-              "interpolate",
-              ["linear"],
-              ["zoom"],
-              15,
-              0,
-              15.05,
-              ["get", "height"]
-            ],
-            "fill-extrusion-base": [
-              "interpolate",
-              ["linear"],
-              ["zoom"],
-              15,
-              0,
-              15.05,
-              ["get", "base_height"]
-            ],
-            "fill-extrusion-opacity": 1
-          }
-        });
-
-        map.addLayer({
-          id: "building-extrusion",
-          type: "fill-extrusion",
-          source: "ponderosa",
-          paint: {
-            // See the Mapbox Style Specification for details on data expressions.
-            // https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions
-
-            // Get the fill-extrusion-color from the source 'color' property.
-            "fill-extrusion-color": ["get", "color"],
-
-            "fill-extrusion-height": [
-              "interpolate",
-              ["linear"],
-              ["zoom"],
-              15,
-              0,
-              15.05,
-              ["get", "height"]
-            ],
-            "fill-extrusion-base": [
-              "interpolate",
-              ["linear"],
-              ["zoom"],
-              15,
-              0,
-              15.05,
-              ["get", "base_height"]
-            ],
-            // Make extrusions slightly opaque for see through indoor walls.
-            "fill-extrusion-opacity": 0.2
-          }
-        });
-
-        // map.addLayer(
-        //   {
-        //     id: "3d-buildings",
-        //     source: "composite",
-        //     "source-layer": "building",
-        //     filter: ["==", "extrude", "true"],
-        //     type: "fill-extrusion",
-        //     minzoom: 15,
-        //     paint: {
-        //       "fill-extrusion-color": "#aaa",
-
-        //       // use an 'interpolate' expression to add a smooth transition effect to the
-        //       // buildings as the user zooms in
-        //       "fill-extrusion-height": [
-        //         "interpolate",
-        //         ["linear"],
-        //         ["zoom"],
-        //         15,
-        //         0,
-        //         15.05,
-        //         ["get", "height"]
-        //       ],
-        //       "fill-extrusion-base": [
-        //         "interpolate",
-        //         ["linear"],
-        //         ["zoom"],
-        //         15,
-        //         0,
-        //         15.05,
-        //         ["get", "min_height"]
-        //       ],
-        //       "fill-extrusion-opacity": 0.6
-        //     }
-        //   },
-        //   labelLayerId
-        // );
-      });
-    </script>
+    <div id="features">
+      <section id="ubc" class="active">
+        <h1>Visualizing my life at UBC</h1>
+        <p>
+          November 1895. London is shrouded in fog and Sherlock Holmes and
+          Watson pass time restlessly awaiting a new case. "The London criminal
+          is certainly a dull fellow," Sherlock bemoans. "There have been
+          numerous petty thefts," Watson offers in response. Just then a
+          telegram arrives from Sherlock's brother Mycroft with a mysterious
+          case.
+        </p>
+      </section>
+      <section id="dorm">
+        <h3>Ponderosa Studios</h3>
+        <p>
+          November 1895. London is shrouded in fog and Sherlock Holmes and
+          Watson pass time restlessly awaiting a new case. "The London criminal
+          is certainly a dull fellow," Sherlock bemoans. "There have been
+          numerous petty thefts," Watson offers in response. Just then a
+          telegram arrives from Sherlock's brother Mycroft with a mysterious
+          case.
+        </p>
+      </section>
+      <section id="work">
+        <h3>Canaccord Learning Commons</h3>
+        <p>
+          Arthur Cadogan West was found dead, head crushed in on train tracks at
+          Aldgate Station at 6AM Tuesday morning. West worked at Woolwich
+          Arsenal on the Bruce-Partington submarine, a secret military project.
+          Plans for the submarine had been stolen and seven of the ten missing
+          papers were found in West's possession. Mycroft implores Sherlock to
+          take the case and recover the three missing papers.
+        </p>
+      </section>
+      <section id="hci">
+        <h3>CPSC 344: Human Computer Interaction</h3>
+        <p>
+          Arthur Cadogan West was found dead, head crushed in on train tracks at
+          Aldgate Station at 6AM Tuesday morning. West worked at Woolwich
+          Arsenal on the Bruce-Partington submarine, a secret military project.
+          Plans for the submarine had been stolen and seven of the ten missing
+          papers were found in West's possession. Mycroft implores Sherlock to
+          take the case and recover the three missing papers.
+        </p>
+      </section>
+      <div id="features-spacer"></div>
+    </div>
+    <script type="module" src="./map/init.js"></script>
   </body>
 </html>
