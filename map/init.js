@@ -34,7 +34,7 @@ map.on("load", function() {
   addPlaceExtrusion(map, "dorm", "black");
 
   addDataSource(map, "work");
-  addPlaceExtrusion(map, "work", "green");
+  addPlaceExtrusion(map, "work", "#bbe5b3");
 
   addDataSource(map, "ponderosa");
   addBuildingExtrusion(map, "ponderosa");
