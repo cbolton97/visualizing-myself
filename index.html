@@ -1,47 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta
-            name="viewport"
-            content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1"
-        />
-        <title>Map View Example</title>
-        <style>
-            body {
-                margin: 0;
-                overflow: hidden;
-            }
-
-            #map {
-                position: absolute;
-                border: 0px;
-                left: 0px;
-                width: 100%;
-                height: 100%;
-                overflow: hidden;
-                z-index: -1;
-            }
-
-            #copyrightNotice {
-                position: absolute;
-                right: 0;
-                bottom: 0;
-                background-color: #f0fef1;
-                z-index: 100;
-                padding: 2px 5px;
-                font-family: sans-serif;
-                font-size: 0.8em;
-                font-weight: normal;
-            }
-        </style>
-    </head>
-
-    <body>
-        <script src="three.min.js"></script>
-
-        <canvas id="map"></canvas>
-        <div id="copyrightNotice"></div>
-    </body>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Visualizing Myself</title>
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <link href="./style.css" rel="stylesheet" />
+  </head>
+  <script>
+    $(window).on("beforeunload", function() {
+      $(window).scrollTop(0);
+    });
+  </script>
+  <body>
+    <div id="map"></div>
+    <div id="features">
+      <section id="ubc" class="active">
+        <h1>Visualizing my life at UBC</h1>
+        <p>
+          November 1895. London is shrouded in fog and Sherlock Holmes and
+          Watson pass time restlessly awaiting a new case. "The London criminal
+          is certainly a dull fellow," Sherlock bemoans. "There have been
+          numerous petty thefts," Watson offers in response. Just then a
+          telegram arrives from Sherlock's brother Mycroft with a mysterious
+          case.
+        </p>
+      </section>
+      <section id="dorm">
+        <h3>Ponderosa Studios</h3>
+        <p>
+          November 1895. London is shrouded in fog and Sherlock Holmes and
+          Watson pass time restlessly awaiting a new case. "The London criminal
+          is certainly a dull fellow," Sherlock bemoans. "There have been
+          numerous petty thefts," Watson offers in response. Just then a
+          telegram arrives from Sherlock's brother Mycroft with a mysterious
+          case.
+        </p>
+      </section>
+      <section id="work">
+        <h3>Canaccord Learning Commons</h3>
+        <p>
+          Arthur Cadogan West was found dead, head crushed in on train tracks at
+          Aldgate Station at 6AM Tuesday morning. West worked at Woolwich
+          Arsenal on the Bruce-Partington submarine, a secret military project.
+          Plans for the submarine had been stolen and seven of the ten missing
+          papers were found in West's possession. Mycroft implores Sherlock to
+          take the case and recover the three missing papers.
+        </p>
+      </section>
+      <section id="hci">
+        <h3>CPSC 344: Human Computer Interaction</h3>
+        <p>
+          Arthur Cadogan West was found dead, head crushed in on train tracks at
+          Aldgate Station at 6AM Tuesday morning. West worked at Woolwich
+          Arsenal on the Bruce-Partington submarine, a secret military project.
+          Plans for the submarine had been stolen and seven of the ten missing
+          papers were found in West's possession. Mycroft implores Sherlock to
+          take the case and recover the three missing papers.
+        </p>
+      </section>
+      <div id="features-spacer"></div>
+    </div>
+    <script type="module" src="./map/init.js"></script>
+  </body>
 </html>
