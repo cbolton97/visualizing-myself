@@ -1,3 +1,9 @@
+.back-link {
+  text-decoration: none;
+  color: #333;
+  font-size: 12px;
+}
+
 .card {
   padding: 0;
   background: rgba(255, 255, 255, 0.8);
@@ -59,7 +65,7 @@
 }
 
 .trello-label.personal {
-  background-color: #333;
+  background-color: #f2d600;
   color: white;
 }
 

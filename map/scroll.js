@@ -1,6 +1,6 @@
 import { locations } from "./locations.js";
 
-var activeChapterName = "ubc";
+var activeChapterName = "start";
 function setActiveChapter(map, locationName) {
   if (locationName === activeChapterName) return;
   map.flyTo(locations[locationName]);

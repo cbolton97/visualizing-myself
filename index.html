@@ -29,19 +29,31 @@
   <body>
     <div id="map"></div>
     <div id="features">
-      <section id="ubc" class="active">
-        <div id="ubc-content" class="content show">
+      <section id="start" class="active">
+        <div id="start-content" class="content show">
           <h1>Visualizing a term at UBC</h1>
+          <div>
+            <h2>438 Tasks Completed</h2>
+            <div>
+              <img src="./images/tasks.png" class="tasks-image">
+              <div class="task-links">
+              <a href="#dorm">20 Personal Tasks →</a>
+              <a href="#work">42 Work Tasks →</a>
+            </div>
+            </div>
+            <h2></h2>
+          </div>
         </div>
       </section>
       <section id="dorm">
         <div id="dorm-content" class="content">
+          <a class="back-link" href="#start">← Back</a>
           <div class="card">
             <img src="./images/dorm.png" class="image">
             <div class="desc">
               <h3>Dorm – Ponderosa Studios</h3>
               <p>
-               In addition to where I mainly eat and sleep, my dorm room is where I get most of my personal and Biome-related tasks completed. 
+               In addition to where I mainly eat and sleep, my dorm room is where I get most of my personal tasks completed. 
                Biome is an internal search engine I'm building with a few of my friends. This term was pretty busy with school, so I didn't work on it 
                as much as I would have liked.
               </p>
@@ -57,19 +69,20 @@
                     completed</span
                   >
                 </div>
-                <div class="stat trello">
+                <!-- <div class="stat trello">
                   <span class="count">26</span>
                   <span class="label"
                     ><span class="trello-label biome">Biome</span> tasks completed</span
                   >
-                </div>
-              </div>
+                </div> -->
+              </div> 
             </div>
           </div>
         </div>
       </section>
       <section id="work">
         <div id="work-content" class="content">
+        <a class="back-link" href="#start">← Back</a>
         <div class="card">
           <img src="./images/work.jpg" class="image">
           <div class="desc">
@@ -78,14 +91,18 @@
               The CLC is where I've worked for nearly 3 years. Here, I manage equipment rentals and support the library staff.
             </p>
             <div class="stats">
+              <div class="stat trello">
+                <span class="count">42</span>
+                <span class="label"
+                  ><span class="trello-label work">Work</span> tasks
+                  completed</span
+                >
+              </div>
               <div class="stat number">
                 <span class="count">93hrs</span>
-                <span class="label">total <span class="trello-label work">CLC</span> time worked</span>
+                <span class="label">total <span class="trello-label work">Work</span> time worked</span>
               </div>
-              <div class="stat number">
-                <span class="count">24</span>
-                <span class="label">total <span class="trello-label work">CLC</span> shifts completed</span>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -93,10 +110,41 @@
       </section>
       <section id="hci">
         <div id="hci-content" class="content">
+          <a class="back-link" href="#start">← Back</a>
           <div class="card">
             <div class="desc">
-              <h3>Class – Human Computer Interaction Design</h3>
-            </div>
+              <h3>Class – CPSC344: Human Computer Interaction Design</h3>
+            </div>  
+          </div>
+        </div>
+      </section>
+      <section id="seng">
+        <div id="seng-content" class="content">
+          <a class="back-link" href="#start">← Back</a>
+          <div class="card">
+            <div class="desc">
+              <h3>Class – CPSC410: Advanced Software Engineering</h3>
+            </div>  
+          </div>
+        </div>
+      </section>
+      <section id="proj">
+        <div id="proj-content" class="content">
+          <a class="back-link" href="#start">← Back</a>
+          <div class="card">
+            <div class="desc">
+              <h3>Class – CPSC319: Software Project</h3>
+            </div>  
+          </div>
+        </div>
+      </section>
+      <section id="biz">
+        <div id="biz-content" class="content">
+          <a class="back-link" href="#start">← Back</a>
+          <div class="card">
+            <div class="desc">
+              <h3>Class – COMM436: Business Process Design</h3>
+            </div>  
           </div>
         </div>
       </section>

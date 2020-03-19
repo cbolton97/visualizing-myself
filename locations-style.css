@@ -28,20 +28,45 @@ section:last-child {
   opacity: 1;
 }
 
-#ubc-content {
+.content .link {
   top: 0;
-  margin: 32px auto;
+  left: 0;
+  position: absolute;
+}
+
+#start-content {
+  top: 0;
   width: 100%;
-  padding: 0;
-  font-size: 42px;
-  text-align: center;
+  padding: 16px;
   background: transparent;
   box-shadow: none;
 }
 
+#start-content h1 {
+  margin: 0;
+  padding: 16px 0;
+  font-size: 42px;
+}
+
+.tasks-image {
+  margin-bottom: 16px;
+  padding: 16px;
+  width: 720px;
+  display: block;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.task-links a {
+  display: block;
+  margin-bottom: 8px;
+  text-decoration: none;
+  color: #333;
+}
+
 @media screen and (min-width: 768px) {
-  #ubc-content {
-    margin: 256px auto;
+  #start-content {
+    margin: 0 auto;
+    padding: 32px;
   }
   #dorm-content {
     top: 15%;
