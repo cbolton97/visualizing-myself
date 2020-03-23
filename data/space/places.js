@@ -14,5 +14,8 @@ export var PLACES = [
   "jj",
   "sbuxlife",
   "sbuxbook",
-  "biomespot"
+  "biomespot",
+  "hcilab",
+  "lifespace",
+  "wreck"
 ];

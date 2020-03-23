@@ -49,11 +49,16 @@ function applyColorsToMap(view) {
   activeBlocks.forEach(block => {
     block.placeIds.forEach(placeId => {
       activePlaceIds.push(placeId);
-      map.setPaintProperty(
-        placeId,
-        "fill-extrusion-opacity",
-        calculateOpacity(block.time)
-      );
+      if (view.id === "everything") {
+        map.setPaintProperty(placeId, "fill-extrusion-opacity", 1);
+      } else {
+        map.setPaintProperty(
+          placeId,
+          "fill-extrusion-opacity",
+          calculateOpacity(block.time)
+        );
+      }
+
       map.setPaintProperty(
         placeId,
         "fill-extrusion-color",

@@ -92,7 +92,7 @@
 .meta-container {
   display: grid;
   width: 100%;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr;
 }
 
 .meta-container p {
@@ -110,8 +110,15 @@
   font-size: 180%;
 }
 
-.meta-container p.meta-title {
-  font-weight: 600;
-  font-size: 125%;
+.meta-container p.meta-info {
+  display: block;
   text-align: left;
+  font-size: 90%;
+}
+
+.meta-container p.meta-info .meta-title {
+  margin: 0;
+  padding: 0 0 2px 0;
+  font-weight: 600;
+  font-size: 150%;
 }

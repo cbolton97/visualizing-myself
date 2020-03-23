@@ -26,10 +26,18 @@ export var LOCATIONS = {
     pitch: 100
   },
   academics: {
+    duration: FLIGHT_DURATION,
     center: [-123.25132322401032, 49.26320211687931],
     zoom: 15.9,
     pitch: 20,
     bearing: 62
+  },
+  personal: {
+    duration: FLIGHT_DURATION,
+    center: [-123.25427277450254, 49.26554818513219],
+    zoom: 15.9,
+    pitch: 20,
+    bearing: -20
   },
   csarea: {
     duration: FLIGHT_DURATION,
@@ -47,7 +55,7 @@ export var LOCATIONS = {
   },
   ethics: {
     duration: FLIGHT_DURATION,
-    center: [-123.24802304607663, 49.2614084501968],
+    center: [-123.24889687114123, 49.26129595583208],
     bearing: 200,
     zoom: 18,
     pitch: 100
@@ -84,6 +92,41 @@ export var LOCATIONS = {
     duration: FLIGHT_DURATION,
     center: [-123.25307358173384, 49.26601062953216],
     bearing: 50,
+    zoom: 17,
+    pitch: 100
+  },
+  biomeloc: {
+    duration: FLIGHT_DURATION,
+    center: [-123.25502310300199, 49.266642445950964],
+    bearing: 200,
+    zoom: 17.5,
+    pitch: 100
+  },
+  nwloc: {
+    duration: FLIGHT_DURATION,
+    center: [-123.24976942708508, 49.26682228715609],
+    bearing: 65,
+    zoom: 17.5,
+    pitch: 30
+  },
+  coffee: {
+    duration: FLIGHT_DURATION,
+    center: [-123.2513715411586, 49.26569390705748],
+    bearing: 65,
+    zoom: 17.5,
+    pitch: 100
+  },
+  soloc: {
+    duration: FLIGHT_DURATION,
+    center: [-123.26222084140667, 49.2615444658056],
+    bearing: 65,
+    zoom: 16.8,
+    pitch: 80
+  },
+  friendloc: {
+    duration: FLIGHT_DURATION,
+    center: [-123.25700687620133, 49.268324134616535],
+    bearing: 120,
     zoom: 17,
     pitch: 100
   }

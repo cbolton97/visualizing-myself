@@ -19,8 +19,8 @@ function generateMetaContent(name, meta) {
   containerElem.setAttribute("class", "meta-container");
 
   var titleElm = document.createElement("p");
-  titleElm.setAttribute("class", "meta-title");
-  titleElm.innerText = name;
+  titleElm.setAttribute("class", "meta-info");
+  titleElm.innerHTML = `<span class="meta-title">${name}</span> Time spent in ${meta.desc}`;
 
   var hoursElm = document.createElement("p");
   hoursElm.setAttribute("class", "meta-hours");
@@ -61,10 +61,16 @@ export function addTimeViews() {
             "href",
             `#${targetView.locationId}-${block.targetId}`
           );
+        } else {
+          debugger;
         }
         blockElem.innerText = `↓ ${block.name} (${block.time}%)`;
       } else {
-        blockElem.append(generateMetaContent(block.name, block.meta || ""));
+        if (block.meta) {
+          blockElem.append(generateMetaContent(block.name, block.meta));
+        } else {
+          blockElem.innerText = `${block.name} (${block.time}%)`;
+        }
       }
 
       viewElem.append(blockElem);

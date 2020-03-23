@@ -14,7 +14,7 @@
   "type": "Feature",
   "properties": {
     "base_height": 8,
-    "height": 14,
+    "height": 12,
     "name": "biomespot"
   }
 }

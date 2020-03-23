@@ -30,7 +30,16 @@ export var TIME_VIEWS = [
         backgroundColor: "#44A3C9",
         color: "white",
         targetId: "academics",
-        placeIds: ["biz", "hci", "proj", "seng", "ethics"]
+        placeIds: [
+          "biz",
+          "hci",
+          "proj",
+          "seng",
+          "ethics",
+          "hcilab",
+          "csstudy",
+          "work"
+        ]
       },
       {
         name: "Work",
@@ -38,7 +47,7 @@ export var TIME_VIEWS = [
         backgroundColor: "#97CC04",
         color: "white",
         targetId: "works",
-        placeIds: ["work", "dorm", "nw", "biomespot"]
+        placeIds: ["work", "dorm", "nw", "biomespot", "lifespace"]
       },
       {
         name: "Personal",
@@ -53,7 +62,8 @@ export var TIME_VIEWS = [
           "jj",
           "gal",
           "kpub",
-          "saveon"
+          "saveon",
+          "wreck"
         ]
       }
     ]
@@ -61,28 +71,36 @@ export var TIME_VIEWS = [
   {
     id: "personal",
     referringId: "everything",
-    locationId: "start",
+    locationId: "personal",
     blocks: [
       {
         name: "Shopping and Eating",
         time: "22",
-        backgroundColor: "blue",
+        backgroundColor: "#FF3366",
         color: "white",
         targetId: "eating",
-        placeIds: ["sbuxbook", "sbuxlife", "jj", "saveon"]
+        placeIds: [
+          "sbuxbook",
+          "sbuxlife",
+          "jj",
+          "gal",
+          "kpub",
+          "saveon",
+          "wreck"
+        ]
       },
       {
         name: "Socializing",
         time: "14",
-        backgroundColor: "green",
+        backgroundColor: "#FF3366",
         color: "white",
-        targetId: "socialzing",
-        placeIds: ["dorm", "gal", "kpub"]
+        targetId: "socializing",
+        placeIds: ["dorm", "gal", "kpub", "wreck"]
       },
       {
         name: "Sleeping",
         time: "48",
-        backgroundColor: "red",
+        backgroundColor: "#FF3366",
         color: "white",
         targetId: "sleepdorm",
         placeIds: ["dorm"]
@@ -90,7 +108,7 @@ export var TIME_VIEWS = [
       {
         name: "Relaxing",
         time: "16",
-        backgroundColor: "purple",
+        backgroundColor: "#FF3366",
         color: "white",
         targetId: "relaxing",
         placeIds: ["dorm"]
@@ -100,12 +118,12 @@ export var TIME_VIEWS = [
   {
     id: "eating",
     referringId: "personal",
-    locationId: "start",
+    locationId: "personal",
     blocks: [
       {
         name: "Save on Foods",
         time: "14",
-        backgroundColor: "blue",
+        backgroundColor: "#FF3366",
         color: "white",
         targetId: "shopsaveon",
         placeIds: ["saveon"]
@@ -113,24 +131,24 @@ export var TIME_VIEWS = [
       {
         name: "Coffee",
         time: "17",
-        backgroundColor: "green",
+        backgroundColor: "#FF3366",
         color: "white",
         targetId: "starbucks",
-        placeIds: ["sbuxlife", "sbuxbook"]
+        placeIds: ["sbuxlife", "sbuxbook", "jj"]
       },
       {
         name: "Cooking",
         time: "49",
-        backgroundColor: "blue",
+        backgroundColor: "#FF3366",
         color: "white",
-        targetId: "dorm",
+        targetId: "cooking",
         placeIds: ["dorm"]
       },
       {
         name: "Other",
         time: "20",
-        backgroundColor: "red",
-        color: "white",
+        backgroundColor: "grey",
+        color: "black",
         placeIds: []
       }
     ]
@@ -138,35 +156,36 @@ export var TIME_VIEWS = [
   {
     id: "socializing",
     referringId: "personal",
-    locationId: "start",
+    locationId: "personal",
     blocks: [
       {
         name: "Significant Other",
         time: "50",
-        backgroundColor: "blue",
+        backgroundColor: "#FF3366",
         color: "white",
-        targetId: "dorm",
-        placeIds: ["dorm"]
+        targetId: "so",
+        placeIds: ["dorm", "wreck"]
       },
       {
         name: "Drinks with Friends",
         time: "27",
-        backgroundColor: "green",
+        backgroundColor: "#FF3366",
         color: "white",
-        placeIds: ["kpup", "gal"]
+        targetId: "friends",
+        placeIds: ["kpub", "gal"]
       },
       {
         name: "Off-Campus Events",
         time: "13",
-        backgroundColor: "blue",
-        color: "white",
+        backgroundColor: "grey",
+        color: "black",
         placeIds: []
       },
       {
         name: "Other",
-        time: "20",
-        backgroundColor: "red",
-        color: "white",
+        time: "10",
+        backgroundColor: "grey",
+        color: "black",
         placeIds: []
       }
     ]
@@ -179,21 +198,23 @@ export var TIME_VIEWS = [
       {
         name: "Streaming",
         time: "73",
-        backgroundColor: "blue",
+        backgroundColor: "#FF3366",
         color: "white",
+        targetId: "streaming",
         placeIds: ["dorm"]
       },
       {
         name: "Reading",
         time: "17",
-        backgroundColor: "green",
+        backgroundColor: "#FF3366",
         color: "white",
+        targetId: "reading",
         placeIds: ["dorm"]
       },
       {
         name: "Other",
         time: "10",
-        backgroundColor: "blue",
+        backgroundColor: "grey",
         color: "white",
         placeIds: []
       }
@@ -218,7 +239,7 @@ export var TIME_VIEWS = [
         backgroundColor: "#97CC04",
         targetId: "biome",
         color: "white",
-        placeIds: ["biomespot"]
+        placeIds: ["biomespot", "dorm"]
       },
       {
         name: "nwPlus Club",
@@ -226,7 +247,7 @@ export var TIME_VIEWS = [
         backgroundColor: "#97CC04",
         targetId: "nwclub",
         color: "white",
-        placeIds: ["nw"]
+        placeIds: ["nw", "lifespace"]
       }
     ]
   },
@@ -241,7 +262,7 @@ export var TIME_VIEWS = [
         backgroundColor: "#44A3C9",
         color: "white",
         targetId: "comm436",
-        placeIds: ["biz"]
+        placeIds: ["biz", "work"]
       },
       {
         name: "Computer Science Courses",
@@ -249,7 +270,7 @@ export var TIME_VIEWS = [
         backgroundColor: "#44A3C9",
         color: "white",
         targetId: "cs",
-        placeIds: ["hci", "seng", "proj", "ethics", "csstudy"]
+        placeIds: ["hci", "seng", "proj", "ethics", "csstudy", "hcilab"]
       }
     ]
   },
@@ -264,7 +285,7 @@ export var TIME_VIEWS = [
         backgroundColor: "#44A3C9",
         color: "white",
         targetId: "cs344",
-        placeIds: ["hci"]
+        placeIds: ["hci", "hcilab"]
       },
       {
         name: "Advanced Software Engineering",
@@ -272,7 +293,7 @@ export var TIME_VIEWS = [
         backgroundColor: "#44A3C9",
         color: "white",
         targetId: "cs410",
-        placeIds: ["seng"]
+        placeIds: ["seng", "csstudy"]
       },
       {
         name: "Software Project Management",
@@ -280,7 +301,7 @@ export var TIME_VIEWS = [
         backgroundColor: "#44A3C9",
         color: "white",
         targetId: "cs319",
-        placeIds: ["proj"]
+        placeIds: ["proj", "hci", "csstudy"]
       },
       {
         name: "Ethics in Computer Science",
@@ -288,7 +309,7 @@ export var TIME_VIEWS = [
         backgroundColor: "#44A3C9",
         color: "white",
         targetId: "cs430",
-        placeIds: ["csstudy"]
+        placeIds: ["hci", "csstudy"]
       }
     ]
   },
@@ -298,11 +319,16 @@ export var TIME_VIEWS = [
     locationId: "hci",
     blocks: [
       {
-        name: "Class – CPSC344: Human Computer Interaction Design",
+        name: "CPSC344: Human Computer Interaction Design",
         time: "100",
         backgroundColor: "#44A3C9",
         color: "white",
-        placeIds: ["hci"]
+        placeIds: ["hci", "hcilab"],
+        meta: {
+          desc: "classroom (left) and lab (right)",
+          hours: 63,
+          percent: 8.5
+        }
       }
     ]
   },
@@ -312,11 +338,16 @@ export var TIME_VIEWS = [
     locationId: "seng",
     blocks: [
       {
-        name: "Class – CPSC410: Advanced Software Engineering",
+        name: "CPSC410: Advanced Software Engineering",
         time: "100",
         backgroundColor: "#44A3C9",
         color: "white",
-        placeIds: ["seng"]
+        placeIds: ["seng", "csstudy"],
+        meta: {
+          desc: "classroom (left) and study space (right)",
+          hours: 27,
+          percent: 3.6
+        }
       }
     ]
   },
@@ -326,11 +357,16 @@ export var TIME_VIEWS = [
     locationId: "proj",
     blocks: [
       {
-        name: "Class – CPSC319: Software Project Management",
+        name: "CPSC319: Software Project Management",
         time: "100",
         backgroundColor: "#44A3C9",
         color: "white",
-        placeIds: ["proj"]
+        placeIds: ["proj", "hci", "csstudy"],
+        meta: {
+          desc: "study space (left), project room (middle), classroom (right)",
+          hours: 58,
+          percent: 7.8
+        }
       }
     ]
   },
@@ -340,11 +376,16 @@ export var TIME_VIEWS = [
     locationId: "biz",
     blocks: [
       {
-        name: "Class – COMM436: Business Process Design",
+        name: "COMM436: Business Process Design",
         time: "100",
         backgroundColor: "#44A3C9",
         color: "white",
-        placeIds: ["biz"]
+        placeIds: ["biz", "work"],
+        meta: {
+          desc: "classroom (left) and library (right)",
+          hours: 40,
+          percent: 5.4
+        }
       }
     ]
   },
@@ -354,11 +395,16 @@ export var TIME_VIEWS = [
     locationId: "ethics",
     blocks: [
       {
-        name: "Class – CPSC430: Ethics in Computer Science",
+        name: "CPSC430: Ethics in Computer Science",
         time: "100",
         backgroundColor: "#44A3C9",
         color: "white",
-        placeIds: ["csstudy"]
+        placeIds: ["hci", "csstudy"],
+        meta: {
+          desc: "classroom (left) and study space (right)",
+          hours: 38,
+          percent: 5.1
+        }
       }
     ]
   },
@@ -370,9 +416,10 @@ export var TIME_VIEWS = [
       {
         name: "Sleeping",
         time: "100",
-        backgroundColor: "green",
+        backgroundColor: "#FF3366",
         color: "white",
-        placeIds: ["dorm"]
+        placeIds: ["dorm"],
+        meta: { desc: "dorm", hours: 206, percent: 27.8 }
       }
     ]
   },
@@ -387,10 +434,7 @@ export var TIME_VIEWS = [
         backgroundColor: "#97CC04",
         color: "white",
         placeIds: ["work"],
-        meta: {
-          hours: 29,
-          percent: 4
-        }
+        meta: { desc: "library", hours: 29, percent: 3.9 }
       }
     ]
   },
@@ -402,9 +446,14 @@ export var TIME_VIEWS = [
       {
         name: "Save-on-Foods",
         time: "100",
-        backgroundColor: "green",
+        backgroundColor: "#FF3366",
         color: "white",
-        placeIds: ["saveon"]
+        placeIds: ["saveon"],
+        meta: {
+          desc: "grocery store",
+          hours: 12,
+          percent: 1.6
+        }
       }
     ]
   },
@@ -414,39 +463,150 @@ export var TIME_VIEWS = [
     locationId: "coffee",
     blocks: [
       {
-        name: "Coffee",
+        name: "Grabbing Coffee",
         time: "100",
-        backgroundColor: "green",
+        backgroundColor: "#FF3366",
         color: "white",
-        placeIds: ["jj", "sbuxlife", "sbuxbook"]
+        placeIds: ["jj", "sbuxlife", "sbuxbook"],
+        meta: {
+          desc: "LIFE (left) and Bookstore (right) Starbucks, JJ Bean (middle)",
+          hours: 16,
+          percent: 2.2
+        }
       }
     ]
   },
   {
     id: "nwclub",
     referringId: "works",
-    locationId: "nwLoc",
+    locationId: "nwloc",
     blocks: [
       {
         name: "nwPlus Club",
         time: "100",
         backgroundColor: "#97CC04",
         color: "white",
-        placeIds: ["nw"]
+        placeIds: ["nw", "lifespace"],
+        meta: {
+          desc: "event space (left) and club room (right)",
+          hours: 34,
+          percent: 4.7
+        }
       }
     ]
   },
   {
     id: "biome",
     referringId: "works",
-    locationId: "biomeLoc",
+    locationId: "biomeloc",
     blocks: [
       {
-        name: "Biome Search",
+        name: "Search Platform Development",
         time: "100",
         backgroundColor: "#97CC04",
         color: "white",
-        placeIds: ["biomespot"]
+        placeIds: ["biomespot", "dorm"],
+        meta: {
+          desc: "project room (front) and dorm (back)",
+          hours: 26,
+          percent: 3.5
+        }
+      }
+    ]
+  },
+  {
+    id: "cooking",
+    referringId: "eating",
+    locationId: "dorm",
+    blocks: [
+      {
+        name: "Cooking",
+        time: "100",
+        backgroundColor: "#FF3366",
+        color: "white",
+        placeIds: ["dorm"],
+        meta: {
+          desc: "dorm",
+          hours: 46,
+          percent: 3.5
+        }
+      }
+    ]
+  },
+  {
+    id: "so",
+    referringId: "socializing",
+    locationId: "soloc",
+    blocks: [
+      {
+        name: "Time with S.O.",
+        time: "100",
+        backgroundColor: "#FF3366",
+        color: "white",
+        placeIds: ["dorm", "wreck"],
+        meta: {
+          desc: "Wreck beach (front) and dorm (back)",
+          hours: 46,
+          percent: 3.5
+        }
+      }
+    ]
+  },
+  {
+    id: "reading",
+    referringId: "relaxing",
+    locationId: "dorm",
+    blocks: [
+      {
+        name: "Reading",
+        time: "100",
+        backgroundColor: "#FF3366",
+        color: "white",
+        placeIds: ["dorm"],
+        meta: {
+          desc: "dorm",
+          hours: 12,
+          percent: 1.6
+        }
+      }
+    ]
+  },
+  {
+    id: "streaming",
+    referringId: "relaxing",
+    locationId: "dorm",
+    blocks: [
+      {
+        name: "Streaming TV/Movies",
+        time: "100",
+        backgroundColor: "#FF3366",
+        color: "white",
+        placeIds: ["dorm"],
+
+        meta: {
+          desc: "dorm",
+          hours: 51,
+          percent: 6.9
+        }
+      }
+    ]
+  },
+  {
+    id: "friends",
+    referringId: "socializing",
+    locationId: "friendloc",
+    blocks: [
+      {
+        name: "Drinks with Friends",
+        time: "100",
+        backgroundColor: "#FF3366",
+        color: "white",
+        placeIds: ["kpub", "gal"],
+        meta: {
+          desc: "Koerner Pub (front) and The Gallery (back)",
+          hours: 16,
+          percent: 2.1
+        }
       }
     ]
   }
