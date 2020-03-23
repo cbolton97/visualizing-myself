@@ -233,7 +233,7 @@ export var TIME_VIEWS = [
   {
     id: "academics",
     referringId: "everything",
-    locationId: "start",
+    locationId: "academics",
     blocks: [
       {
         name: "Business Course",
@@ -288,7 +288,7 @@ export var TIME_VIEWS = [
         backgroundColor: "#44A3C9",
         color: "white",
         targetId: "cs430",
-        placeIds: ["ethics", "csstudy"]
+        placeIds: ["csstudy"]
       }
     ]
   },
@@ -358,7 +358,7 @@ export var TIME_VIEWS = [
         time: "100",
         backgroundColor: "#44A3C9",
         color: "white",
-        placeIds: ["ethics", "csstudy"]
+        placeIds: ["csstudy"]
       }
     ]
   },

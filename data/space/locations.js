@@ -1,7 +1,7 @@
 export var FLIGHT_DURATION = 6000;
 export var START_PROPS = {
   center: [-123.25427277450254, 49.26554818513219],
-  zoom: 15.5,
+  zoom: 15,
   pitch: 0,
   bearing: 0
 };
@@ -24,6 +24,12 @@ export var LOCATIONS = {
     bearing: -100,
     zoom: 17.5,
     pitch: 100
+  },
+  academics: {
+    center: [-123.25132322401032, 49.26320211687931],
+    zoom: 15.9,
+    pitch: 0,
+    bearing: 62
   },
   csarea: {
     duration: FLIGHT_DURATION,
