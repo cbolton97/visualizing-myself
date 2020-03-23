@@ -1,1 +1,1 @@
-export var BUILDINGS = ["CLC", "DMP", "HA", "PONDS", "XWING"];
+export var BUILDINGS = ["CLC", "DMP", "HA", "CEDAR", "XWING", "ICICS", "NEST"];

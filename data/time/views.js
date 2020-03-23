@@ -4,7 +4,7 @@ export var TIME_VIEWS = [
     locationId: "start",
     blocks: [
       {
-        name: "All Work",
+        name: "All Time",
         time: "100",
         backgroundColor: "black",
         color: "white",
@@ -15,7 +15,7 @@ export var TIME_VIEWS = [
   },
   {
     id: "everything",
-    locationId: "start",
+    locationId: "hci",
     blocks: [
       {
         name: "School",
