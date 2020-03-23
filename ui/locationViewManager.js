@@ -3,23 +3,23 @@ import { PLACES } from "../data/space/places.js";
 import { TIME_VIEWS } from "../data/time/views.js";
 import { map } from "../map/init.js";
 
-export var activeLocation = Object.keys(LOCATIONS)[0];
-export var activeView = TIME_VIEWS[0].id;
+export var activeLocationId = Object.keys(LOCATIONS)[0];
+export var activeViewId = TIME_VIEWS[0].id;
 
 function showLocationContent() {
   document
-    .getElementById(`${activeLocation}-content`)
+    .getElementById(`${activeLocationId}-content`)
     .setAttribute("class", "content show");
 }
 
 function hideLocationContent() {
   document
-    .getElementById(`${activeLocation}-content`)
+    .getElementById(`${activeLocationId}-content`)
     .setAttribute("class", "content");
 }
 
-function foregroundTimeContainer(view) {
-  if (view === Object.keys(TIME_VIEWS)[0].id) {
+function foregroundTimeContainer(viewId) {
+  if (viewId === TIME_VIEWS[0].id) {
     document
       .getElementById("time-container")
       .setAttribute("class", "foreground");
@@ -42,13 +42,12 @@ function activateViewElem(view) {
   document.getElementById(view).classList.add("active");
 }
 
-function applyColorsToMap(viewId) {
-  var activeBlocks = TIME_VIEWS.find(view => view.id === viewId).blocks;
+function applyColorsToMap(view) {
+  var activeBlocks = view.blocks;
   var activePlaceIds = [];
 
   activeBlocks.forEach(block => {
     block.placeIds.forEach(placeId => {
-      console.log("coloring", placeId);
       activePlaceIds.push(placeId);
       map.setPaintProperty(placeId, "fill-extrusion-opacity", 1);
       map.setPaintProperty(
@@ -64,33 +63,50 @@ function applyColorsToMap(viewId) {
   );
 
   inactivePlaceIds.forEach(placeId => {
-    console.log("hiding", placeId);
     map.setPaintProperty(placeId, "fill-extrusion-opacity", 0);
   });
 }
 
+function toggleBackButton(view) {
+  var backElem = document.getElementById("time-back-button");
+  var referringView = TIME_VIEWS.find(v => v.id === view.referringId);
+  if (referringView) {
+    backElem.setAttribute(
+      "href",
+      `#${referringView.locationId}-${referringView.id}`
+    );
+    backElem.classList.add("active");
+  } else {
+    backElem.classList.remove("active");
+  }
+}
+
 export function handleMapMovement() {
-  hideLocationContent();
+  // hideLocationContent();
 
   setTimeout(() => {
-    showLocationContent();
+    // showLocationContent();
   }, FLIGHT_DURATION / 1.2);
 }
 
 export function handleHashChange() {
-  var hashLocation = window.location.hash.split("#")[1].split("-")[0];
-  var hashView = window.location.hash.split("#")[1].split("-")[1];
+  var hashLocationId = window.location.hash.split("#")[1].split("-")[0];
+  var hashViewId = window.location.hash.split("#")[1].split("-")[1];
 
-  console.log(activeLocation, hashLocation);
-  if (activeLocation === hashLocation && activeView === hashView) return;
+  console.log(activeLocationId, hashLocationId);
+  if (activeLocationId === hashLocationId && activeViewId === hashViewId)
+    return;
 
-  map.flyTo(LOCATIONS[hashLocation]);
+  var newView = TIME_VIEWS.find(view => view.id === hashViewId);
 
-  foregroundTimeContainer(hashView);
-  activateLocationElem(hashLocation, activeLocation);
-  activateViewElem(hashView);
-  applyColorsToMap(hashView);
+  map.flyTo(LOCATIONS[hashLocationId]);
 
-  activeLocation = hashLocation;
-  activeView = hashView;
+  foregroundTimeContainer(hashViewId);
+  // activateLocationElem(hashLocationId, activeLocationId);
+  activateViewElem(hashViewId);
+  applyColorsToMap(newView);
+  toggleBackButton(newView);
+
+  activeLocationId = hashLocationId;
+  activeViewId = hashViewId;
 }

@@ -15,11 +15,10 @@ export var map = new mapboxgl.Map({
 map.addControl(
   new mapboxgl.NavigationControl({
     showCompass: true,
-    showZoom: false,
+    showZoom: true,
     visualizePitch: true
   })
 );
-map.scrollZoom.disable();
 
 map.on("load", () => {
   addPlacesAndBuildings();

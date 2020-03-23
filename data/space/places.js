@@ -6,5 +6,13 @@ export var PLACES = [
   "proj",
   "seng",
   "work",
-  "csstudy"
+  "csstudy",
+  "saveon",
+  "ethics",
+  "gal",
+  "kpub",
+  "jj",
+  "sbuxlife",
+  "sbuxbook",
+  "biomespot"
 ];

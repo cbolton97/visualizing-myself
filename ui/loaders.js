@@ -31,6 +31,9 @@ export function addTimeViews() {
       var blockElem = createBlockElement(block);
       if (block.targetId) {
         blockElem.setAttribute("data-targetId", block.targetId);
+        blockElem.innerText = `↓ ${blockElem.innerText}`;
+      } else {
+        blockElem.setAttribute("disabled", true);
       }
       viewElem.append(blockElem);
     });

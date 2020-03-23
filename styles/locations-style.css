@@ -77,6 +77,11 @@ section:last-child {
     top: 50%;
     left: 56%;
   }
+
+  #saveon-content {
+    top: 50%;
+    left: 56%;
+  }
 }
 
 @media screen and (max-width: 768px) {
