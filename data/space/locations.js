@@ -6,7 +6,7 @@ export var START_PROPS = {
   bearing: 0
 };
 
-export var locations = {
+export var LOCATIONS = {
   start: {
     duration: FLIGHT_DURATION,
     ...START_PROPS

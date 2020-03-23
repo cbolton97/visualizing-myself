@@ -1,0 +1,41 @@
+#time-container {
+  position: sticky;
+  top: 16px;
+  width: 100%;
+  height: 100px;
+  z-index: 1000;
+  transition: top 400ms ease-out;
+  overflow: hidden;
+}
+
+#time-container.foreground {
+  top: 300px;
+}
+
+#time {
+  margin: 0 auto;
+  width: 80%;
+  position: relative;
+}
+
+#time .view,
+#time .view .block {
+  height: 0;
+  padding: 0;
+  margin: 0;
+  transition: height 200ms ease-out;
+}
+
+#time .view.active,
+#time .view.active .block {
+  height: 100px;
+  opacity: 1;
+}
+
+#time .block {
+  top: 0;
+  margin: 0;
+  border: none;
+
+  float: left;
+}

@@ -17,9 +17,10 @@
       href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css"
       rel="stylesheet"
     />
-    <link href="./map-style.css" rel="stylesheet" />
-    <link href="./locations-style.css" rel="stylesheet" />
-    <link href="./card-style.css" rel="stylesheet" />
+    <link href="./styles/map-style.css" rel="stylesheet" />
+    <link href="./styles/time-style.css" rel="stylesheet" />
+    <link href="./styles/locations-style.css" rel="stylesheet" />
+    <link href="./styles/card-style.css" rel="stylesheet" />
   </head>
   <script>
     $(window).on("beforeunload", function() {
@@ -28,21 +29,14 @@
   </script>
   <body>
     <div id="map"></div>
+    <div id="time-container" class="foreground">
+      <div id="time"></div>
+    </div>
     <div id="features">
       <section id="start" class="active">
         <div id="start-content" class="content show">
-          <h1>Visualizing a term at UBC</h1>
-          <div>
-            <h2>438 Tasks Completed</h2>
-            <div>
-              <img src="./images/tasks.png" class="tasks-image">
-              <div class="task-links">
-              <a href="#dorm">20 Personal Tasks →</a>
-              <a href="#work">42 Work Tasks →</a>
-            </div>
-            </div>
-            <h2></h2>
-          </div>
+          <h1>Progress Points</h1>
+          <p>Mapping where I'm most productive on campus</p>
         </div>
       </section>
       <section id="dorm">
@@ -151,5 +145,6 @@
     </div>
     </div>
     <script type="module" src="./map/init.js"></script>
+    <script type="module" src="./ui/init.js"></script>
   </body>
 </html>

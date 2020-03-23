@@ -1,20 +1,20 @@
-export function addDataSource(map, name) {
+import { map } from "./init.js";
+import { PLACES } from "../data/space/places.js";
+import { BUILDINGS } from "../data/space/buildings.js";
+
+function addDataSource(name, folder) {
   map.addSource(name, {
     type: "geojson",
-    data: `../data/${name}.json`
+    data: `../data/space/geojson/${folder}/${name}.json`
   });
 }
 
-function addExtrusionLayer(map, source, color, opacity) {
+function addExtrusionLayer(source, color, opacity) {
   map.addLayer({
-    id: `${source}-extrusion`,
+    id: source,
     type: "fill-extrusion",
     source: source,
     paint: {
-      // See the Mapbox Style Specification for details on data expressions.
-      // https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions
-
-      // Get the fill-extrusion-color from the source 'color' property.
       "fill-extrusion-color": color,
 
       "fill-extrusion-height": [
@@ -40,10 +40,21 @@ function addExtrusionLayer(map, source, color, opacity) {
   });
 }
 
-export function addPlaceExtrusion(map, source, color) {
-  addExtrusionLayer(map, source, color, 1);
+function addPlaceLayers() {
+  PLACES.forEach(name => {
+    addDataSource(name, "places");
+    addExtrusionLayer(name, "black", 1);
+  });
 }
 
-export function addBuildingExtrusion(map, source) {
-  addExtrusionLayer(map, source, "black", 0.2);
+function addBuildingLayers() {
+  BUILDINGS.forEach(name => {
+    addDataSource(name, "buildings");
+    addExtrusionLayer(name, "black", 0.2);
+  });
+}
+
+export function addPlacesAndBuildings() {
+  addPlaceLayers();
+  addBuildingLayers();
 }
