@@ -1,8 +1,7 @@
 import { TIME_VIEWS, calculateOpacity } from "../data/time/views.js";
 
 function createBlockElement(block) {
-  var blockElem = document.createElement("button");
-  blockElem.addEventListener("click", handleBlockClick);
+  var blockElem = document.createElement("a");
   blockElem.setAttribute("type", "button");
   blockElem.setAttribute("class", "block");
   blockElem.setAttribute(
@@ -11,9 +10,31 @@ function createBlockElement(block) {
       block.time
     }%; opacity: ${calculateOpacity(block.time)};`
   );
-  blockElem.innerText = `${block.name} (${block.time}%)`;
 
   return blockElem;
+}
+
+function generateMetaContent(name, meta) {
+  var containerElem = document.createElement("div");
+  containerElem.setAttribute("class", "meta-container");
+
+  var titleElm = document.createElement("p");
+  titleElm.setAttribute("class", "meta-title");
+  titleElm.innerText = name;
+
+  var hoursElm = document.createElement("p");
+  hoursElm.setAttribute("class", "meta-hours");
+  hoursElm.innerHTML = `<span>${meta.hours}hrs</span> spent in October 2019`;
+
+  var percentElm = document.createElement("p");
+  percentElm.setAttribute("class", "meta-precent");
+  percentElm.innerHTML = `<span>${meta.percent}%</span> of the entire month`;
+
+  containerElem.append(titleElm);
+  containerElem.append(hoursElm);
+  containerElem.append(percentElm);
+
+  return containerElem;
 }
 
 export function addTimeViews() {
@@ -31,23 +52,24 @@ export function addTimeViews() {
 
     view.blocks.forEach(block => {
       var blockElem = createBlockElement(block);
+
       if (block.targetId) {
-        blockElem.setAttribute("data-targetId", block.targetId);
-        blockElem.innerText = `↓ ${blockElem.innerText}`;
+        var targetView = TIME_VIEWS.find(view => view.id === block.targetId);
+
+        if (targetView) {
+          blockElem.setAttribute(
+            "href",
+            `#${targetView.locationId}-${block.targetId}`
+          );
+        }
+        blockElem.innerText = `↓ ${block.name} (${block.time}%)`;
       } else {
-        blockElem.setAttribute("disabled", true);
+        blockElem.append(generateMetaContent(block.name, block.meta || ""));
       }
+
       viewElem.append(blockElem);
     });
 
     timeElem.append(viewElem);
   });
-}
-
-function handleBlockClick() {
-  this.blur();
-  var newViewId = this.getAttribute("data-targetid");
-  var newLocationId = TIME_VIEWS.find(view => view.id === newViewId).locationId;
-
-  window.location.hash = `${newLocationId}-${newViewId}`;
 }

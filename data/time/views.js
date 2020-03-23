@@ -386,7 +386,11 @@ export var TIME_VIEWS = [
         time: "100",
         backgroundColor: "#97CC04",
         color: "white",
-        placeIds: ["work"]
+        placeIds: ["work"],
+        meta: {
+          hours: 29,
+          percent: 4
+        }
       }
     ]
   },
