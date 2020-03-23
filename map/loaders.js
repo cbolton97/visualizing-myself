@@ -35,7 +35,8 @@ function addExtrusionLayer(source, color, opacity) {
         15.05,
         ["get", "base_height"]
       ],
-      "fill-extrusion-opacity": opacity
+      "fill-extrusion-opacity": opacity,
+      "fill-extrusion-vertical-gradient": true
     }
   });
 }

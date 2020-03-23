@@ -28,7 +28,7 @@ export var LOCATIONS = {
   academics: {
     center: [-123.25132322401032, 49.26320211687931],
     zoom: 15.9,
-    pitch: 0,
+    pitch: 20,
     bearing: 62
   },
   csarea: {
