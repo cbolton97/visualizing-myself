@@ -27,22 +27,22 @@ export var LOCATIONS = {
   },
   csarea: {
     duration: FLIGHT_DURATION,
-    center: [-123.24802304607663, 49.2614084501968],
-    bearing: 20,
-    zoom: 17,
-    pitch: 5
+    center: [-123.24833347805694, 49.26123705145426],
+    bearing: 140,
+    zoom: 17.6,
+    pitch: 100
   },
   hci: {
     duration: FLIGHT_DURATION,
     center: [-123.24802304607663, 49.2614084501968],
-    bearing: 120,
+    bearing: 160,
     zoom: 18,
     pitch: 100
   },
   ethics: {
     duration: FLIGHT_DURATION,
     center: [-123.24802304607663, 49.2614084501968],
-    bearing: 40,
+    bearing: 200,
     zoom: 18,
     pitch: 100
   },
@@ -55,14 +55,14 @@ export var LOCATIONS = {
   },
   proj: {
     duration: FLIGHT_DURATION,
-    center: [-123.24802304607663, 49.2614084501968],
-    bearing: 50,
+    center: [-123.24833347805694, 49.26123705145426],
+    bearing: 350,
     zoom: 18,
-    pitch: 15
+    pitch: 100
   },
   biz: {
     duration: FLIGHT_DURATION,
-    center: [-123.25427277450254, 49.26554818513219],
+    center: [-123.25453973015568, 49.26575229715229],
     bearing: 100,
     zoom: 18,
     pitch: 100

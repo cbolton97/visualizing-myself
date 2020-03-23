@@ -1,6 +1,6 @@
 import { FLIGHT_DURATION, LOCATIONS } from "../data/space/locations.js";
 import { PLACES } from "../data/space/places.js";
-import { TIME_VIEWS } from "../data/time/views.js";
+import { TIME_VIEWS, calculateOpacity } from "../data/time/views.js";
 import { map } from "../map/init.js";
 
 export var activeLocationId = Object.keys(LOCATIONS)[0];
@@ -18,6 +18,11 @@ function hideLocationContent() {
     .setAttribute("class", "content");
 }
 
+function activateLocationElem(newLocation, oldLocation) {
+  document.getElementById(newLocation).setAttribute("class", "active");
+  document.getElementById(oldLocation).setAttribute("class", "");
+}
+
 function foregroundTimeContainer(viewId) {
   if (viewId === TIME_VIEWS[0].id) {
     document
@@ -26,11 +31,6 @@ function foregroundTimeContainer(viewId) {
   } else {
     document.getElementById("time-container").setAttribute("class", "");
   }
-}
-
-function activateLocationElem(newLocation, oldLocation) {
-  document.getElementById(newLocation).setAttribute("class", "active");
-  document.getElementById(oldLocation).setAttribute("class", "");
 }
 
 function activateViewElem(view) {
@@ -49,7 +49,11 @@ function applyColorsToMap(view) {
   activeBlocks.forEach(block => {
     block.placeIds.forEach(placeId => {
       activePlaceIds.push(placeId);
-      map.setPaintProperty(placeId, "fill-extrusion-opacity", 1);
+      map.setPaintProperty(
+        placeId,
+        "fill-extrusion-opacity",
+        calculateOpacity(block.time)
+      );
       map.setPaintProperty(
         placeId,
         "fill-extrusion-color",

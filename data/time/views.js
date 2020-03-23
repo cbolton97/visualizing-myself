@@ -1,5 +1,9 @@
 import { PLACES } from "../space/places.js";
 
+export function calculateOpacity(time) {
+  return Math.min(1, Math.ceil(parseInt(time, 10) * 1.9) / 100 + 0.3);
+}
+
 export var TIME_VIEWS = [
   {
     id: "all",
@@ -23,7 +27,7 @@ export var TIME_VIEWS = [
       {
         name: "Academics",
         time: "30",
-        backgroundColor: "blue",
+        backgroundColor: "#44A3C9",
         color: "white",
         targetId: "academics",
         placeIds: ["biz", "hci", "proj", "seng", "ethics"]
@@ -31,7 +35,7 @@ export var TIME_VIEWS = [
       {
         name: "Work",
         time: "12",
-        backgroundColor: "green",
+        backgroundColor: "#97CC04",
         color: "white",
         targetId: "works",
         placeIds: ["work", "dorm", "nw", "biomespot"]
@@ -39,7 +43,7 @@ export var TIME_VIEWS = [
       {
         name: "Personal",
         time: "58",
-        backgroundColor: "red",
+        backgroundColor: "#FF3366",
         color: "white",
         targetId: "personal",
         placeIds: [
@@ -203,7 +207,7 @@ export var TIME_VIEWS = [
       {
         name: "Canaccord Learning Commons",
         time: "33",
-        backgroundColor: "green",
+        backgroundColor: "#97CC04",
         color: "white",
         targetId: "clc",
         placeIds: ["work"]
@@ -211,14 +215,16 @@ export var TIME_VIEWS = [
       {
         name: "Biome Search",
         time: "29",
-        backgroundColor: "lightgreen",
+        backgroundColor: "#97CC04",
+        targetId: "biome",
         color: "white",
         placeIds: ["biomespot"]
       },
       {
         name: "nwPlus Club",
         time: "38",
-        backgroundColor: "darkgreen",
+        backgroundColor: "#97CC04",
+        targetId: "nwclub",
         color: "white",
         placeIds: ["nw"]
       }
@@ -232,18 +238,18 @@ export var TIME_VIEWS = [
       {
         name: "Business Course",
         time: "18",
-        backgroundColor: "yellow",
-        color: "black",
+        backgroundColor: "#44A3C9",
+        color: "white",
         targetId: "comm436",
         placeIds: ["biz"]
       },
       {
         name: "Computer Science Courses",
         time: "82",
-        backgroundColor: "blue",
+        backgroundColor: "#44A3C9",
         color: "white",
         targetId: "cs",
-        placeIds: ["hci", "seng", "proj", "ethics"]
+        placeIds: ["hci", "seng", "proj", "ethics", "csstudy"]
       }
     ]
   },
@@ -255,7 +261,7 @@ export var TIME_VIEWS = [
       {
         name: "Human Computer Interaction Design",
         time: "34",
-        backgroundColor: "blue",
+        backgroundColor: "#44A3C9",
         color: "white",
         targetId: "cs344",
         placeIds: ["hci"]
@@ -263,7 +269,7 @@ export var TIME_VIEWS = [
       {
         name: "Advanced Software Engineering",
         time: "15",
-        backgroundColor: "blue",
+        backgroundColor: "#44A3C9",
         color: "white",
         targetId: "cs410",
         placeIds: ["seng"]
@@ -271,7 +277,7 @@ export var TIME_VIEWS = [
       {
         name: "Software Project Management",
         time: "32",
-        backgroundColor: "blue",
+        backgroundColor: "#44A3C9",
         color: "white",
         targetId: "cs319",
         placeIds: ["proj"]
@@ -279,10 +285,10 @@ export var TIME_VIEWS = [
       {
         name: "Ethics in Computer Science",
         time: "19",
-        backgroundColor: "blue",
+        backgroundColor: "#44A3C9",
         color: "white",
         targetId: "cs430",
-        placeIds: ["ethics"]
+        placeIds: ["ethics", "csstudy"]
       }
     ]
   },
@@ -294,7 +300,7 @@ export var TIME_VIEWS = [
       {
         name: "Class – CPSC344: Human Computer Interaction Design",
         time: "100",
-        backgroundColor: "blue",
+        backgroundColor: "#44A3C9",
         color: "white",
         placeIds: ["hci"]
       }
@@ -308,7 +314,7 @@ export var TIME_VIEWS = [
       {
         name: "Class – CPSC410: Advanced Software Engineering",
         time: "100",
-        backgroundColor: "blue",
+        backgroundColor: "#44A3C9",
         color: "white",
         placeIds: ["seng"]
       }
@@ -322,7 +328,7 @@ export var TIME_VIEWS = [
       {
         name: "Class – CPSC319: Software Project Management",
         time: "100",
-        backgroundColor: "blue",
+        backgroundColor: "#44A3C9",
         color: "white",
         placeIds: ["proj"]
       }
@@ -336,8 +342,8 @@ export var TIME_VIEWS = [
       {
         name: "Class – COMM436: Business Process Design",
         time: "100",
-        backgroundColor: "yellow",
-        color: "black",
+        backgroundColor: "#44A3C9",
+        color: "white",
         placeIds: ["biz"]
       }
     ]
@@ -350,9 +356,9 @@ export var TIME_VIEWS = [
       {
         name: "Class – CPSC430: Ethics in Computer Science",
         time: "100",
-        backgroundColor: "blue",
+        backgroundColor: "#44A3C9",
         color: "white",
-        placeIds: ["ethics"]
+        placeIds: ["ethics", "csstudy"]
       }
     ]
   },
@@ -378,7 +384,7 @@ export var TIME_VIEWS = [
       {
         name: "Canaccord Learning Commons",
         time: "100",
-        backgroundColor: "green",
+        backgroundColor: "#97CC04",
         color: "white",
         placeIds: ["work"]
       }
@@ -409,6 +415,34 @@ export var TIME_VIEWS = [
         backgroundColor: "green",
         color: "white",
         placeIds: ["jj", "sbuxlife", "sbuxbook"]
+      }
+    ]
+  },
+  {
+    id: "nwclub",
+    referringId: "works",
+    locationId: "nwLoc",
+    blocks: [
+      {
+        name: "nwPlus Club",
+        time: "100",
+        backgroundColor: "#97CC04",
+        color: "white",
+        placeIds: ["nw"]
+      }
+    ]
+  },
+  {
+    id: "biome",
+    referringId: "works",
+    locationId: "biomeLoc",
+    blocks: [
+      {
+        name: "Biome Search",
+        time: "100",
+        backgroundColor: "#97CC04",
+        color: "white",
+        placeIds: ["biomespot"]
       }
     ]
   }

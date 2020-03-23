@@ -1,4 +1,4 @@
-import { TIME_VIEWS } from "../data/time/views.js";
+import { TIME_VIEWS, calculateOpacity } from "../data/time/views.js";
 
 function createBlockElement(block) {
   var blockElem = document.createElement("button");
@@ -7,7 +7,9 @@ function createBlockElement(block) {
   blockElem.setAttribute("class", "block");
   blockElem.setAttribute(
     "style",
-    `background: ${block.backgroundColor}; color: ${block.color}; width: ${block.time}%;`
+    `background: ${block.backgroundColor}; color: ${block.color}; width: ${
+      block.time
+    }%; opacity: ${calculateOpacity(block.time)};`
   );
   blockElem.innerText = `${block.name} (${block.time}%)`;
 

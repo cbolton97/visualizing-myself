@@ -1,6 +1,6 @@
 #time-container {
   position: absolute;
-  top: 32px;
+  bottom: 32px;
   width: 100%;
   height: 100px;
   z-index: 1000;
@@ -12,7 +12,9 @@
   width: 80%;
   position: relative;
   transition: width 400ms ease-out;
-  background: white;
+  border-radius: 8px;
+
+  overflow: hidden;
 }
 
 #time-container.foreground #time {
@@ -22,16 +24,20 @@
 #time-back-button {
   position: fixed;
   display: block;
-  top: 10px;
-  width: 100%;
-  text-align: center;
+  bottom: 140px;
+  margin: 0 auto;
+  background: white;
+  padding: 4px 6px;
+  margin-left: 10%;
+  border-radius: 4px;
+  text-align: left;
   font-size: 14px;
   font-family: sans-serif;
   text-decoration: none;
   color: #333;
   opacity: 0;
   z-index: 1001;
-  transition: opacity 100ms ease-out;
+  transition: opacity 300ms ease-out;
 }
 
 #time-back-button.active {
@@ -40,16 +46,18 @@
 
 #time .view,
 #time .view .block {
+  overflow: hidden;
   height: 0;
   padding: 0;
   margin: 0;
-  transition: height 200ms ease-out;
+  transform: scaleY(0);
+  transition: transform 300ms ease-out;
 }
 
 #time .view.active,
 #time .view.active .block {
   height: 100px;
-  opacity: 1;
+  transform: scaleY(1);
 }
 
 #time .block {
@@ -58,4 +66,8 @@
   border: none;
   font-size: 16px;
   float: left;
+}
+
+#everything button.block {
+  opacity: 1 !important;
 }
