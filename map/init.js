@@ -21,7 +21,10 @@ map.addControl(
 );
 map.scrollZoom.disable();
 
-map.on("load", addPlacesAndBuildings);
+map.on("load", () => {
+  addPlacesAndBuildings();
+  window.location.hash = "start-all";
+});
 map.on("movestart", handleMapMovement);
 
 // map.on("load", function() {

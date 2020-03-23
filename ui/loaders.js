@@ -1,5 +1,4 @@
 import { TIME_VIEWS } from "../data/time/views.js";
-import { map } from "../map/init.js";
 
 function createBlockElement(block) {
   var blockElem = document.createElement("button");

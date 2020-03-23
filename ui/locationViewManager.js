@@ -3,7 +3,6 @@ import { TIME_VIEWS } from "../data/time/views.js";
 import { map } from "../map/init.js";
 
 export var activeLocation = Object.keys(LOCATIONS)[0];
-window.location.hash = `${activeLocation}-${TIME_VIEWS[0].id}`;
 
 function showLocationContent() {
   document
