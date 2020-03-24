@@ -1,10 +1,10 @@
 #intro {
   position: absolute;
-  top: 32px;
   opacity: 0;
   width: 100%;
+  height: calc(100vh - 200px);
   z-index: 5000;
-  transition: opacity 300ms ease-out;
+  transition: opacity 100ms ease-out;
 }
 
 .foreground + #intro {
@@ -12,19 +12,42 @@
 }
 
 #intro .content {
-  margin: 0 auto;
+  margin: 32px auto;
+  position: relative;
   width: 85%;
-  padding: 32px;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255);
   border-radius: 8px;
   font-family: sans-serif;
   line-height: 1.25;
 }
 
+#intro .content .scroll {
+  height: calc(100vh - 364px);
+  padding: 64px;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
 #intro .content h1,
+#intro .content h2,
 #intro .content p {
   margin: 0;
   padding: 0 0 12px 0;
+}
+
+#intro .content h2 {
+  padding-top: 12px;
+}
+
+#intro .content p.cta {
+  padding: 16px 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background: white;
+  box-shadow: 0px -4px 4px rgba(50, 50, 50, 0.2);
 }
 
 #intro .content .subtitle {
@@ -33,6 +56,6 @@
 
 @media screen and (min-width: 768px) {
   #intro .content {
-    width: 50%;
+    width: 40%;
   }
 }
