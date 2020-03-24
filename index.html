@@ -19,8 +19,7 @@
     />
     <link href="./styles/map-style.css" rel="stylesheet" />
     <link href="./styles/time-style.css" rel="stylesheet" />
-    <link href="./styles/locations-style.css" rel="stylesheet" />
-    <link href="./styles/card-style.css" rel="stylesheet" />
+    <link href="./styles/intro-style.css" rel="stylesheet" />
   </head>
   <script>
     $(window).on("beforeunload", function() {
@@ -31,117 +30,23 @@
     <div id="map"></div>
     <a id="time-back-button" href="#" class="">↑ Back</a>
     <div id="time-container" class="foreground">
-      <div id="time">
+      <div id="time"></div>
+    </div>
+    <div id="intro">
+      <div class="content">
+        <h1>Test</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+          feugiat risus et ipsum efficitur, a elementum dui suscipit. Sed vel
+          euismod lectus. Nullam euismod libero eget quam ultrices auctor.
+          Pellentesque tristique egestas maximus. Etiam rutrum magna vitae diam
+          imperdiet pulvinar. Pellentesque arcu odio, luctus eget hendrerit in,
+          imperdiet at libero.
+        </p>
+        <p><strong>Get started by clicking on the time bar below 👇</strong></p>
       </div>
     </div>
-    <!-- <div id="features">
-      <section id="start" class="active">
-        <div id="start-content" class="content show">
-          <h1>Progress Points</h1>
-          <p>Mapping where I'm most productive on campus</p>
-        </div>
-      </section>
-      <section id="dorm">
-        <div id="dorm-content" class="content">
-          <div class="card">
-            <div class="desc">
-              <h3>Dorm Room – Ponderosa Studios</h3>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section id="work">
-        <div id="work-content" class="content">
-        <div class="card">
-          <div class="desc">
-            <h3>Work – Canaccord Learning Commons</h3>
-          </div>
-        </div>
-      </div>
-      </section>
-      <section id="hci">
-        <div id="hci-content" class="content">
-          <div class="card">
-            <div class="desc">
-              <h3>Class – CPSC344: Human Computer Interaction Design</h3>
-            </div>  
-          </div>
-        </div>
-      </section>
-      <section id="seng">
-        <div id="seng-content" class="content">
-          <div class="card">
-            <div class="desc">
-              <h3>Class – CPSC410: Advanced Software Engineering</h3>
-            </div>  
-          </div>
-        </div>
-      </section>
-      <section id="proj">
-        <div id="proj-content" class="content">
-          <div class="card">
-            <div class="desc">
-              <h3>Class – CPSC319: Software Project Management</h3>
-            </div>  
-          </div>
-        </div>
-      </section>
-      <section id="biz">
-        <div id="biz-content" class="content">
-          <div class="card">
-            <div class="desc">
-              <h3>Class – COMM436: Business Process Design</h3>
-            </div>  
-          </div>
-        </div>
-      </section>
-      <section id="ethics">
-        <div id="ethics-content" class="content">
-          <div class="card">
-            <div class="desc">
-              <h3>Class – CPSC430: Ethics in Computer Science</h3>
-            </div>  
-          </div>
-        </div>
-      </section>
-      <section id="saveon">
-        <div id="saveon-content" class="content">
-          <div class="card">
-            <div class="desc">
-              <h3>Save-on-Foods</h3>
-            </div>  
-          </div>
-        </div>
-      </section>
-      <section id="starbucks">
-        <div id="starbucks-content" class="content">
-          <div class="card">
-            <div class="desc">
-              <h3>Coffee</h3>
-            </div>  
-          </div>
-        </div>
-      </section>
-      <section id="bars">
-        <div id="bars-content" class="content">
-          <div class="card">
-            <div class="desc">
-              <h3>Bars with Friends</h3>
-            </div>  
-          </div>
-        </div>
-      </section>
-      <section id="koerner">
-        <div id="koerner-content" class="content">
-          <div class="card">
-            <div class="desc">
-              <h3>Koerner Library</h3>
-            </div>  
-          </div>
-        </div>
-      </section>
-    </div> -->
-    </div>
+
     <script type="module" src="./map/init.js"></script>
     <script type="module" src="./ui/init.js"></script>
   </body>

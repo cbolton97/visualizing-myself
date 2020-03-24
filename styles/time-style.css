@@ -9,7 +9,7 @@
 
 #time {
   margin: 0 auto;
-  width: 80%;
+  width: 100%;
   position: relative;
   transition: width 400ms ease-out;
   border-radius: 8px;
@@ -18,7 +18,7 @@
 }
 
 #time-container.foreground #time {
-  width: 50%;
+  width: 90%;
 }
 
 #time-back-button {
@@ -28,7 +28,6 @@
   margin: 0 auto;
   background: white;
   padding: 8px 10px;
-  margin-left: 10%;
   border-radius: 4px;
   text-align: left;
   font-size: 14px;
@@ -47,6 +46,18 @@
 #time-back-button:hover {
   padding-top: 7px;
   padding-bottom: 9px;
+}
+
+@media screen and (min-width: 768px) {
+  #time {
+    width: 80%;
+  }
+  #time-container.foreground #time {
+    width: 50%;
+  }
+  #time-back-button {
+    margin-left: 10%;
+  }
 }
 
 #time .view,

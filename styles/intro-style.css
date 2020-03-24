@@ -1,0 +1,27 @@
+#intro {
+  position: absolute;
+  top: 32px;
+  opacity: 0;
+  width: 100%;
+  z-index: 5000;
+  transition: opacity 300ms ease-out;
+}
+
+.foreground + #intro {
+  opacity: 1;
+}
+
+#intro .content {
+  margin: 0 auto;
+  width: 85%;
+  padding: 0 16px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  font-family: sans-serif;
+}
+
+@media screen and (min-width: 768px) {
+  #intro .content {
+    width: 50%;
+  }
+}
