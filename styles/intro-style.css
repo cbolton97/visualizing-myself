@@ -1,6 +1,6 @@
 #intro {
   position: absolute;
-  opacity: 0;
+  display: none;
   width: 100%;
   height: calc(100vh - 200px);
   z-index: 5000;
@@ -8,7 +8,7 @@
 }
 
 .foreground + #intro {
-  opacity: 1;
+  display: block;
 }
 
 #intro .content {
@@ -39,6 +39,12 @@
   padding-top: 12px;
 }
 
+#intro .content img {
+  margin: 8px 0 16px 0;
+  width: 100%;
+  border: 1px solid #333;
+}
+
 #intro .content p.cta {
   padding: 16px 0;
   position: absolute;
@@ -58,4 +64,12 @@
   #intro .content {
     width: 40%;
   }
+}
+
+#intro .content ul {
+  margin: 0;
+}
+#intro .content li {
+  margin: 0;
+  padding-bottom: 8px;
 }

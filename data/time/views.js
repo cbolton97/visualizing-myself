@@ -327,7 +327,7 @@ export var TIME_VIEWS = [
         meta: {
           desc: "classroom (left) and lab (right)",
           hours: 63,
-          percent: 8.5
+          percent: 8.4
         }
       }
     ]
@@ -419,7 +419,7 @@ export var TIME_VIEWS = [
         backgroundColor: "#FF3366",
         color: "white",
         placeIds: ["dorm"],
-        meta: { desc: "dorm", hours: 206, percent: 27.8 }
+        meta: { desc: "dorm", hours: 206, percent: 27.7 }
       }
     ]
   },
@@ -472,7 +472,7 @@ export var TIME_VIEWS = [
           desc:
             "LIFE starbucks (left), JJ Bean (middle), and Bookstore Starbucks (right)",
           hours: 16,
-          percent: 2.2
+          percent: 2.1
         }
       }
     ]
@@ -491,7 +491,7 @@ export var TIME_VIEWS = [
         meta: {
           desc: "event space (left) and club room (right)",
           hours: 34,
-          percent: 4.7
+          percent: 4.5
         }
       }
     ]
@@ -529,7 +529,7 @@ export var TIME_VIEWS = [
         meta: {
           desc: "dorm",
           hours: 46,
-          percent: 3.5
+          percent: 6.2
         }
       }
     ]
@@ -547,8 +547,8 @@ export var TIME_VIEWS = [
         placeIds: ["dorm", "wreck"],
         meta: {
           desc: "Wreck beach (front) and dorm (back)",
-          hours: 46,
-          percent: 3.5
+          hours: 30,
+          percent: 4.0
         }
       }
     ]
