@@ -7,7 +7,7 @@ export var BUILDINGS = [
   "ICICS",
   "NEST",
   "OAK",
-  "LIFE",
+  "LIFEB",
   "KOERNER",
   "BOOKSTORE",
   "CENTRAL",
