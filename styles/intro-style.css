@@ -14,10 +14,21 @@
 #intro .content {
   margin: 0 auto;
   width: 85%;
-  padding: 0 16px;
-  background: rgba(255, 255, 255, 0.7);
+  padding: 32px;
+  background: rgba(255, 255, 255, 0.8);
   border-radius: 8px;
   font-family: sans-serif;
+  line-height: 1.25;
+}
+
+#intro .content h1,
+#intro .content p {
+  margin: 0;
+  padding: 0 0 12px 0;
+}
+
+#intro .content .subtitle {
+  font-size: 110%;
 }
 
 @media screen and (min-width: 768px) {

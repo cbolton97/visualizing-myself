@@ -23,6 +23,5 @@ map.addControl(
 map.on("load", () => {
   addPlacesAndBuildings();
   window.location.hash = "start-all";
-  map.setLight({ color: "#6ef", intensity: 0.5, position: [1.15, 135, 45] });
 });
 map.on("movestart", handleMapMovement);

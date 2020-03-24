@@ -469,7 +469,8 @@ export var TIME_VIEWS = [
         color: "white",
         placeIds: ["jj", "sbuxlife", "sbuxbook"],
         meta: {
-          desc: "LIFE (left) and Bookstore (right) Starbucks, JJ Bean (middle)",
+          desc:
+            "LIFE starbucks (left), JJ Bean (middle), and Bookstore Starbucks (right)",
           hours: 16,
           percent: 2.2
         }
